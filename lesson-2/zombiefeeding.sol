@@ -9,6 +9,12 @@ contract ZombieFeeding is ZombieFactory {
     require(msg.sender == zombieToOwner[_zombieId]);
     // Get a hold of this new zombies DNA
     Zombie storage myZombie = zombies[_zombieId];
+    // Make sure target dna is only dnaDigits long
+    _targetDna = _targetDna % dnaModulus;
+    // Create new dna for target zombie
+    uint newDna = (myZombie.dna + _targetDna) / 2;
+    // Create new zombie from target zombie
+    _createZombie("NoName", newDna);
   }
 
 }
