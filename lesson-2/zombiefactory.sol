@@ -18,7 +18,7 @@ contract ZombieFactory {
     // Map the user's address to the zombie count
     mapping (address => uint) ownerZombieCount;
 
-    function _createZombie(string memory _name, uint _dna) private {
+    function _createZombie(string memory _name, uint _dna) internal {
         // Create zombie ID using 'zombies' array index
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
         // At index ID, map the value of Message Sender
